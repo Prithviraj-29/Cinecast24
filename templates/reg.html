@@ -1,0 +1,187 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration</title>
+  <link rel="stylesheet" href="{%static 'regstyle.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <form name="myForm" onsubmit="return validateForm()" method="POST">
+      {%csrf_token%}
+      <div class="user-details">
+
+        <div class="input-box" id="name">
+          <span class="details">First Name</span>
+          <input type="text" name="fname" placeholder="Enter your Name" required /><span class="formerror"></span>
+        </div>
+
+
+        <div class="input-box" id="lname">
+          <span class="details">Last Name</span>
+          <input type="text" name="lname" placeholder="Enter your Lastname" required /><span class="formerror"></span>
+        </div>
+
+
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input type="email" name="email" placeholder="Enter your Email" required />
+        </div>
+
+
+        <div class="input-box" id="phn">
+          <span class="details">Phone Number</span>
+          <input type="text" name="phn" placeholder="Enter your Number" required /><span class="formerror"></span>
+        </div>
+
+
+        <div class="input-box" id="pwd">
+          <span class="details">Password</span>
+          <input type="password" name="password" placeholder="Enter your Password" required /><span
+            class="formerror"></span>
+        </div>
+
+        
+        <div class="input-box" id="cpwd">
+          <span class="details">Confirm Password</span>
+          <input type="password" name="cpassword" placeholder="Re-Enter your Password" required /><span
+            class="formerror"></span>
+        </div>
+        <div>
+          <div class="gender-details">
+            <span class="gender-title">Gender</span>
+            <div>
+              <input type="radio" name="gender" id="dot-1" value="on">Male
+            </div>
+            <div>  
+              <input type="radio" name="gender" id="dot-2" value="off">Female
+            </div>
+            <input type="text" id="gselected" name="gselected" style="display: none;" />
+
+          </div>
+        </div>
+        <span class="prodetails">Select Profession</span>
+        <div class="branchstyle">
+
+          <select id='branch' name='branch'>
+            <option>Select</option>
+            <option>Stunt Direction</option>
+            <option>Art Direction</option>
+            <option>Cinematography</option>
+            <option>Editing</option>
+            <option>Dubbing Artist</option>
+            <option>Cinema Drivers</option>
+            <option>Production Women</option>
+            <option>script</option>
+            <option>Music</option>
+            <option>Production Executive</option>
+            <option>Technical unit</option>
+            <option>Studio Workers</option>
+            <option>Production Assistance</option>
+            <option>Makeup</option>
+            <option>Costume Designing</option>
+            <option>Cast</option>
+            <option>AudioGraphy</option>
+            <option>Publicity Designing</option>
+            <option>Junior Artist Agent</option>
+            <option>Outdoor Lightmen</option>
+            <option>Photography</option>
+            <option>Choreography</option>
+            <option>Junior Artist</option>
+            <option>Direction Department</option>
+
+          </select>
+        </div>
+
+        <div class="button">
+          <input type="submit" onclick="if (validateForm()) showAlert()"  value="Register" />
+        </div>
+      </div>
+    </form>
+    <p>Already have account? <a href="{%url 'login' %}">login</a>
+  </div>
+
+
+
+
+</body>
+<script>
+  function showAlert() {
+    alert("Registration Successful");
+    // Redirect to the login page after showing the alert
+    window.location.href = "{% url 'login' %}";
+  }
+  function clearerror() {
+    error = document.getElementsByClassName("formerror");
+    for (let item of error) {
+      item.innerHTML = "";
+    }
+  }
+
+  function seterror(id, error) {
+    element = document.getElementById(id);
+    element.getElementsByClassName('formerror')[0].innerHTML = error;
+  }
+  //validation function
+  function validateForm() {
+    var returnval = true;
+    clearerror()
+    //name validation
+    var name = document.forms['myForm']['fname'].value;
+    if (name.length < 5) {
+      seterror('name', "* Username is too short");
+      returnval = false;
+    }
+    //lastname validation
+    var last = document.forms['myForm']['lname'].value;
+    if (last.length < 5) {
+      seterror('lname', "* lastname is too short");
+      returnval = false;
+    }
+    //phone-no validation
+    var phone = document.forms['myForm']['phn'].value;
+    if (phone.length != 10) {
+      seterror('phn', "* Phone Number must be 10 digit");
+      returnval = false;
+    }
+    //password
+    var password = document.forms['myForm']['password'].value;
+    if (password.length < 8) {
+      seterror('pwd', "* Minimum 8 characters");
+      returnval = false;
+    }
+    //confirm password
+    var cpassword = document.forms['myForm']['cpassword'].value;
+    if (cpassword != password) {
+      seterror('cpwd', "* Password must match");
+      returnval = false;
+    }
+   
+    //validation for gender
+    var g = document.getElementsByName("gender");
+    var val = "";
+    for (var i = 0; i < g.length; i++) {
+      if (g[i].checked == true) {
+        val = g[i].value;
+        break;
+      }
+    }
+    if (val== "") {
+      alert("Please select gender");
+      return false;
+    }
+    document.getElementById('gselected').value = val;
+    return returnval;
+  }
+</script>
+
+</html>

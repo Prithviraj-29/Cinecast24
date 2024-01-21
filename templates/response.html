@@ -1,0 +1,141 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/static/dashstyle.css">
+
+  <style>
+    header{
+      position: fixed;
+      z-index: 101;
+    }
+    .view {
+      background: #19B3D3;
+    }
+
+    .content {
+      padding: 100px;
+      position: relative;
+    }
+
+    .details {
+      background-color: #E9EDF0;
+      margin: 5px 0;
+      padding: 1px 10px;
+      border-radius: 5px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    input {
+      background-color: #19B3D3;
+    position: relative;
+    height: 40px;
+    width: 300px;
+    border: none;
+    border-radius: 10px;
+    margin: 5px;
+    color: white;
+    font-size: 15px;
+
+    }
+
+    input:hover,
+    input:focus {
+      background-color: #8be5f7;
+      color: black;
+    }
+
+    .hire {
+      position: relative;
+
+      left: 40%;
+    }
+
+    .reject {
+      position: relative;
+
+      left: 40%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <!--header area start-->
+    <div class="left_area">
+      <a href="{%url 'index' %}">CineCAST<span>24</span></a>
+    </div>
+    <div class="title">
+      <h1>User Dashboard</h1>
+    </div>
+
+  </header>
+  <!--header area end-->
+  <img class="img" src="/static/illustration (1).png" alt="">
+  <!--sidebar start-->
+  <div class="sidebar">
+
+    <a href="{%url 'profile' %}" class="active"><span>Profile</span></a>
+    <a href="{%url 'viewjob' %}" class="job"><span>View Job</span></a>
+    <a href="{%url 'postjob' %}" class="post"><span>Post Job</span></a>
+    <a href="{%url 'response' %}" class="view"><span>View Response</span></a>
+    <a href="{%url 'index' %}"><span>Signout</span></a>
+  </div>
+  <!--sidebar end-->
+
+  <div class="content">
+    <div class="view-job">
+      <h4>View responses</h4>
+    </div>
+    {% if response is not None %}
+    {% for x in response %}
+    <div class="details">
+      <form method="post" action="{% url 'hire' hid=x.userid uid=request.session.userid %}">
+        {% csrf_token %}
+
+        <h2>Name: <span style="font-size: 20px;">{{ x.fname }}</span></h2>
+        <h2>Email: <span style="font-size: 20px;">{{ x.email }}</span></h2>
+        <h2>Phone no.: <span style="font-size: 20px;">{{ x.phn }}</span></h2>
+        <h2>Profession: <span style="font-size: 20px;">{{ x.profession }}</span></h2>
+
+        <div class="hire">
+          <input type="submit" value="Hire Now" onclick="Hired()">
+        </div>
+
+      </form>
+
+      <form method="post" action="{% url 'reject' hid=x.userid uid=request.session.userid %}">
+        {% csrf_token %}
+        <div class="reject">
+          <input type="submit" value="Reject"
+            onclick="if(confirm('This user will get removed from list.')){ alert('Rejected successfully')} else{flase}">
+
+        </div>
+      </form>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No Response</p>
+    {% endif %}
+  </div>
+
+
+
+</body>
+<script>
+  function Hired() {
+    alert("You Hired a freelancer.")
+  }
+
+</script>
+
+</html>

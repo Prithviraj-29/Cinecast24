@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #E9D5CA;
+    transition: 0.5s ease;
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #66666685;
+}
+
+.container .title {
+    font-size: 40px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: #dd7a7a;
+}
+
+.container form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .user-details .input-box {
+    margin-bottom: 15px;
+    width: calc(100%/2 - 20px);
+}
+
+.user-details .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.user-details .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-weight: 18px;
+}
+
+form .gender-details {
+    width: 640px;
+    height: auto;
+    position: relative;
+
+}
+
+form .gender-details .gender-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+#dot-1:checked~.category label .one,
+#dot-2:checked~.category label .two {
+    border-color: #b7dfff;
+    background: #6cbbfc;
+}
+
+form .button {
+    height: 45px;
+    width: 640px;
+    margin: 45px 0;
+}
+.gender-details{
+    display: flex;
+    justify-content: space-around;
+}
+form .button input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: #363062;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    transition: .5s ease;
+}
+
+form .button input:hover {
+    box-shadow: 0px 4px 20px 0px #363062;
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+.input-box-check {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.input-box-check .group {
+
+    margin: 0 8px;
+}
+
+.formerror {
+    font-size: 13px;
+    color: #ff2727;
+    font-style: italic;
+}
+
+.branchstyle {
+    background: #fff;
+    background-image: none;
+    width: 40%;
+    padding: 5px 2px;
+    height: auto;
+    color: black;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    right:30%;
+}
+
+#branch {
+    font-size: 15px;
+    color: #5e5e5e;
+    text-align: center;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 3;
+    overflow: hidden;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+.prodetails{
+    font-weight: 500;
+}

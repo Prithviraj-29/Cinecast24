@@ -1,0 +1,114 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Open Sans", sans-serif;
+  color: #363062;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-form {
+ 
+  width: 50%;
+  height: 60%;
+  background: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px #36306286;
+}
+
+.box-form div {
+  height: auto;
+}
+@media only screen and (max-width: 900px) {
+  body {
+    width: 60%;
+    height: 70%;
+  }
+  .box-form .right{
+    padding: 40px ;
+  }
+}
+img{
+  position: relative;
+  left:-20px;
+  width: 120%;
+  height: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.box-form .right {
+  position: relative;
+  top:-20px;
+  padding: 120px 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.box-form .right h5 {
+  position: relative;
+  top:10px;
+  font-size: 2rem;
+  text-align: center;
+  color: #363062;
+}
+.box-form .right p {
+  font-size: 10px;
+  color: #B0B3B9;
+}
+.box-form .right .inputs {
+  overflow: hidden;
+}
+.box-form .right input {
+  width: 100%;
+  border-radius: 5px;
+  background: #ffff;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border: 1px solid #B0B3B9;
+}
+
+form .btn {
+ 
+  margin: 5px 0;
+}
+.box-form .right .btn input {
+  border: none;
+  height: 2.5rem;
+  width: 5rem;
+  background-color: #363062;
+  color: #fff;
+  border-radius: 50px;
+  margin-bottom: 40px;
+  transition: all 0.5s ease;
+}
+.box-form .right .btn input:hover{
+  box-shadow: 0px 4px 20px 0px #363062;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+.formerror{
+  color:red;
+}
+.forget{
+  font-size: 0.8rem;
+}

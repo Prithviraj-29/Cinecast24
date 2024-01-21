@@ -1,0 +1,72 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login Page in HTML with CSS Code Example</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="{%static 'loginstyle.css' %}">
+
+</head>
+	<style>
+		
+		
+	</style>
+<body>
+	<div class="box-form">
+		<div class="left">
+			<img src="/static/img/login.png" alt="">
+		</div>
+		<div class="right">
+			<h5>Login</h5>
+			<p>Don't have an account? <a href="{%url 'registration' %}">Creat Your Account</a> it takes less than a minute</p>
+			
+			<form id='f1' method="POST">
+				{%csrf_token%}
+				<div class="inputs">
+					<input type="email" placeholder="Enter your Email" name="email" id="email" required>
+					<input type="password" placeholder="Enter your Password" name="password" id="password" required>
+					
+					{% if error_message %}
+						<p style="color: red; font-size: 15px; padding: 0%; margin: 0%;">{{error_message}}</p>
+					{% endif %}
+				</div>
+				<a class="forget" href="{%url 'forgotpassword' %}">Forget password ?</a>
+				<div class="btn">
+					<input class="button" type="submit" value="Login">
+				</div>
+			</form>
+		</div>
+
+	</div>
+	{% if message %}
+	<script>
+	  alert("Registration Successful")
+	</script>
+	{% endif %}
+{% if error_message == "*User not found" %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const box1 = document.getElementById('email');
+		box1.style.border="1px solid red"
+        box1.style.backgroundColor = "#FFEBEE";
+    });
+</script>
+{% elif error_message == "*Incorrect password"%}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const box2 = document.getElementById('password');
+        box2.style.border="1px solid red"
+        box2.style.backgroundColor = "#FFEBEE";
+    });
+</script>
+{% endif %}
+</body>
+
+
+</html>

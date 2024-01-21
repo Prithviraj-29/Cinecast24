@@ -1,0 +1,172 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/static/dashstyle.css">
+
+  <style>
+    .active {
+      background: #19B3D3;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      top: 15%;
+      left: 5%;
+      padding: 10px;
+      width: 70%;
+      height: 75%;
+      /* background-color: #E9EDF0; */
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .details {
+      padding: 2%;
+      background-color: #ffffff;
+      /* border: 2px solid #19B3D3; */
+      border-radius: 15px;
+
+    }
+
+    .data {
+      height: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    h2,
+    p {
+      text-align: center;
+      margin-bottom: 2%;
+    }
+
+    .button-2 {
+      background-color:  #19B3D3;
+      border-radius: 8px;
+      border-width: 0;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 10px 12px;
+      text-align: center;
+      transition: all 200ms;
+      vertical-align: baseline;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      text-decoration: none;
+      position: relative;
+      left: 42%;
+      margin-top: 5%;
+
+    }
+    .button-2:hover{
+      background-color:  #189db8;
+      color: #ffffff;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--header area start-->
+  <header>
+
+    <div class="left_area">
+      <a href="{%url 'index' %}">CineCAST<span>24</span></a>
+    </div>
+    <div class="title">
+      <h1>User Dashboard</h1>
+    </div>
+
+  </header>
+  <!--header area end-->
+  <img class="img" src="/static/illustration (1).png" alt="">
+  <!--sidebar start-->
+  <div class="sidebar">
+
+    <a href="{%url 'profile' %}" class="active"><span>Profile</span></a>
+    <a href="{%url 'viewjob' %}" class="job"><span>View Job</span></a>
+    <a href="{%url 'postjob' %}" class="post"><span>Post Job</span></a>
+    <a href="{%url 'response' %}" class="view"><span>View Response</span></a>
+    <a href="{%url 'index' %}"><span>Signout</span></a>
+  </div>
+  <!--sidebar end-->
+
+  <div class="content">
+    <h4>Profile</h4>
+    <div class="profile-img">
+      <img src="/static/user-pic02.png" alt="">
+    </div>
+    <!-- <div class="details">
+      {%for x in details%}
+      <h2>Name: {{ x.fname }}</h2>
+      <h2>Last Name: {{ x.lname }}</h2>
+      <h2>Email: {{ x.email }}</h2>
+      <h2>Phone Number: {{ x.phn }}</h2>
+      <h2>Profession: {{ x.profession }}</h2>
+      {% endfor%}
+    </div> -->
+    <div class="details">
+      {%for x in details%}
+      <div class="data">
+        <h2>First Name</h2>
+        <p>:</p>
+        <p>{{ x.fname }}</p>
+      </div>
+      <hr>
+      <div class="data">
+        <h2>Last Name</h2>
+        <p>:</p>
+        <p>{{ x.lname }}</p>
+      </div>
+      <hr>
+      <div class="data">
+        <h2>Email</h2>
+        <p>:</p>
+        <p>{{ x.email }}</p>
+      </div>
+      <hr>
+      <div class="data">
+        <h2>Phone Number:</h2>
+        <p>:</p>
+        <p>{{ x.phn }}</p>
+      </div>
+      <hr>
+      <div class="data">
+        <h2>Profession</h2>
+        <p>:</p>
+        <p> {{ x.profession }}</p>
+      </div>
+      {% endfor%}
+      <a href="{%url 'editprofile'  %}" class="button-2" name="Edit">
+        Edit Profile</a>
+    </div>
+  </div>
+
+</body>
+
+</html>

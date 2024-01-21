@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            font-family: "Open Sans", sans-serif;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .title{
+            padding: 20px;
+            background-color: #a9e4ff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow:2px 2px 2px rgb(0, 0, 0) ;
+        }
+        .container{
+            width: 33%;
+       
+        }
+        .details{
+            width: 100%;
+        }
+        form{
+            /* border: 1px solid red; */
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 5px 0;
+        }
+        input{
+            margin: 5px;
+            width: 75%;
+            padding:10px;
+            border: 1px solid rgba(44, 44, 44, 0.363);
+            border-radius: 5px ;
+        }
+        h1,h3{
+            color:  #000000;
+        }
+
+/* CSS */
+.button-3 {
+  appearance: none;
+  background-color: #02055a;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  margin-top: 5%;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color: #0129aa;
+  color: #ffffff;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Cinecast<span>24</span></h1>
+            <h3>Update profile</h3>
+            <div class="details">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="First Name" class="form-input user" name="fname" value="{{ details.fname }}">
+                    <input type="text" placeholder="Last Name" class="form-input user" name="lname" value="{{ details.lname }}">
+                    <input type="email" placeholder="E-mail" class="form-input" name="email" value="{{ details.email }}">
+                    <input type="text" placeholder="Phone no." class="form-input" name="phn" value="{{ details.phn }}">
+                    <input type="password" placeholder="Password" class="form-input" name="password" value="{{ details.password }}"">
+                    <button type="submit" onclick="save()" class="button-3">Save data</button>
+                </form>
+                
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function save(){
+        alert("Profile Updated.")
+    }
+</script>
+
+</html>

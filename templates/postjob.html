@@ -1,0 +1,130 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/static/dashstyle.css">
+
+  <style>
+    .post {
+      background: #19B3D3;
+    }
+
+    .far {
+      color: #a7abde;
+      padding-left: 15px;
+
+    }
+
+    .col-div-3 .box p {
+      font-size: 25px;
+
+    }
+
+    .box .fas {
+      color: #a7abde;
+      position: absolute;
+      padding-top: 50px;
+
+
+    }
+
+    .box .fas .fa-home {
+      color: #a7abde;
+      padding-left: 20px;
+    }
+
+    .content {
+      padding: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      background-color: #02055a;
+      color: #fff;
+      width: 5rem;
+      height: 2rem;
+      font-size: 15px;
+      border-radius: 5px;
+     margin-top: 10px;
+      transition: all 0.5s ease;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background-color: #19B3D3;
+      color: #02055a;
+      box-shadow: 0px 0px 20px #02055a52;
+    }
+    .jobdes{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: 100%;
+    }
+    textarea {
+      margin: 3%;
+      height: 200px;
+      width: 30%;
+    }
+    input{
+      height: 30px;
+      width: 30%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+    <div class="left_area">
+      <a href="{%url 'index' %}">CineCAST<span>24</span></a>
+    </div>
+    <div class="title">
+      <h1>User Dashboard</h1>
+    </div>
+  </header>
+  <!--header area end-->
+  <img class="img" src="/static/illustration (1).png" alt="">
+  <!--sidebar start-->
+  <div class="sidebar">
+
+    <a href="{%url 'profile' %}" class="active"><span>Profile</span></a>
+    <a href="{%url 'viewjob' %}" class="job"><span>View Job</span></a>
+    <a href="{%url 'postjob' %}" class="post"><span>Post Job</span></a>
+    <a href="{%url 'response' %}" class="view"><span>View Response</span></a>
+    <a href="{%url 'index' %}"><span>Signout</span></a>
+  </div>
+  <!--sidebar end-->
+  <form method="post">
+    {%csrf_token%}
+    <div class="content">
+      <h4>Write your job description here. </h4>
+      <div class="jobdes">
+        <input  type="text" class="jobtitle" name="title" placeholder="Job title" required>
+        <textarea id='des' name='description' placeholder="I need .." required></textarea>
+        <input class="btn" type="submit" onclick="post()" value="Post" />
+
+      </div>
+    </div>
+  </form>
+
+</body>
+<script>
+function post(){
+    alert("Job posted successfully.");
+}
+
+</script>
+
+</html>

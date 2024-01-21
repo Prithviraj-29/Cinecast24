@@ -1,0 +1,93 @@
+/*Section 8 css start*/
+.images{
+  display: flex;
+}
+.footer {
+    padding: 60px 125px;
+  
+    margin-top: 100px;
+  
+    background-image: url("/static/f-bg\ \(1\).jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer_top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .footer_top_list {
+    flex: 25%;
+  }
+  
+  .footer_top_list:not(:last-of-type) {
+    margin-right: 20px;
+  }
+  
+  .footer_top_list h5 {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #D96846;
+    text-align: center;
+  }
+  
+  .footer_top_list ul {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer_top_list ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer_top_list ul li a {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--white);
+    text-decoration: none;
+    line-height: 20px;
+    transition: all 0.5s ease;
+  }
+  
+  .footer_top_list ul li a:hover {
+    transform: scale(5);
+    color:#D96846;
+  }
+  
+
+  /*Section 8 css end*/
+  footer .about h1 {
+    font-size: 30px;
+    color: aliceblue;
+    text-align: center;
+  }
+ 
+  .footer_top_list h1{
+    font-size: 30px;
+    color: #D96846;
+    text-align: center;
+  }
+  footer .about p{
+    padding: 30px;
+    font-size: 15px;
+    color: aliceblue;
+    text-align: center;
+  }
+  .footer_top_list ul{
+    text-decoration: none;
+    font-size: 20px;
+    color: aliceblue;
+  } 
+  .footer_bottom p{
+  
+    font-size: 10px;
+    color: aliceblue;
+    text-align: center;
+  }

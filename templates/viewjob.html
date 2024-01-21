@@ -1,0 +1,110 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/static/dashstyle.css">
+
+  <style>
+    .job {
+      background: #19B3D3;
+    }
+
+    .joblist {
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid rgba(161, 161, 161, 0.349);
+      border-radius: 20px;
+      padding: 20px;
+
+    }
+
+    .content {
+      padding: 100px;
+    }
+
+    input {
+      background-color: #19B3D3;
+      color: #fff;
+      width: 5rem;
+      height: 2rem;
+      font-size: 12px;
+      border-radius: 5px;
+      border: none;
+
+    }
+
+    input:hover {
+      transform: translateY(1px);
+      
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!--header area start-->
+  <header>
+    <div class="left_area">
+      <a href="{%url 'index' %}">CineCAST<span>24</span></a>
+    </div>
+    <div class="title">
+      <h1>User Dashboard</h1>
+    </div>
+  </header>
+  <!--header area end-->
+  <img class="img" src="/static/illustration (1).png" alt="">
+  <!--sidebar start-->
+  <div class="sidebar">
+
+    <a href="{%url 'profile' %}" class="active"><span>Profile</span></a>
+    <a href="{%url 'viewjob' %}" class="job"><span>View Job</span></a>
+    <a href="{%url 'postjob' %}" class="post"><span>Post Job</span></a>
+    <a href="{%url 'response' %}" class="view"><span>View Response</span></a>
+    <a href="{%url 'index' %}"><span>Signout</span></a>
+  </div>
+  <!--sidebar end-->
+
+  <div class="content">
+    <div class="view-job">
+      <h4>List Of Recent Job</h4>
+      {% if message %}
+      <p style="color: rgb(22, 108, 236); font-size: 20px; padding: 0%; margin: 0%;">{{message}}</p>
+      {% endif %}
+      {%for x in jobs%}
+      <form method="post" action="{% url 'apply_job' jid=x.jobid uid=uid %}">
+      
+        {%csrf_token%}
+        <ul>
+          <div class="joblist">
+            <div>
+              <h2>{{x.jobtitle}}</h2>
+              <h5>{{x.description}}</h5>
+
+
+            </div>
+            <span><input type="submit" onclick='applied()' value="Apply Now"></span>
+           
+          </div>
+
+        </ul>
+      </form>
+      {%endfor%}
+    </div>
+
+  </div>
+
+</body>
+<script>
+function applied(){
+  alert("Successfully applied for job.")
+}
+</script>
+</html>
